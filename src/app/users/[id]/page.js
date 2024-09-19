@@ -1,4 +1,5 @@
 
+import { getAllUsers, getUserById } from "@/app/_lib/data-service";
 import { GET } from "@/app/api/users/[id]/route";
 
 export async function generateMetadata({params}){
@@ -7,11 +8,16 @@ export async function generateMetadata({params}){
     title: user.name  
   }
  }
-
+ export async function generateStaticParams() {
+  
+  const users = await getAllUsers()
+  return users.map(user => ({id: user._id}));
+}
  
 
 const page = async ({ params }) => {
   console.log(params);
+
   const user = await GET(null,{params});
   return (
     <>
