@@ -32,6 +32,7 @@ export default function Page() {
       const response = await fetch('http://localhost:3000/api/users', {
         method: 'POST',
         body: JSON.stringify(user),
+        
       });
 
       if (response.ok) {

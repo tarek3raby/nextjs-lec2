@@ -1,28 +1,18 @@
-import { getAllUsers, getUserById } from "@/app/_lib/userfetch";
+
 import { GET } from "@/app/api/users/[id]/route";
 
 export async function generateMetadata({params}){
-  const res = await GET(null,{params});;
-  const user = await res.json();
+  const user = await GET(null,{params});
   return{
     title: user.name  
   }
  }
 
- export async function generateStaticParams() {
-  
-  const users = await getAllUsers()
-  return users.map(user => ({id: user._id.toString()}));
-}
+ 
 
 const page = async ({ params }) => {
-  // console.log(params);
-  let id = params.id;
-  // const res = await GET(null,{params});;
-  const user = await getUserById(id)
-  console.log(user);
-  
-
+  console.log(params);
+  const user = await GET(null,{params});
   return (
     <>
       <div className="card border-info mb-3">
