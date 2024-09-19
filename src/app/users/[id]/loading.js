@@ -1,0 +1,16 @@
+import React from "react";
+
+export const loading = () => {
+  return (
+    <div className="d-flex justify-content-center align-items-center ">
+      <button className="btn btn-primary" type="button" disabled>
+        <span
+          className="spinner-border spinner-border-sm"
+          aria-hidden="true"
+        ></span>
+        <span role="status">Loading...</span>
+      </button>
+    </div>
+  );
+};
+export default loading;
